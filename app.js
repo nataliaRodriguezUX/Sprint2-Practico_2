@@ -8,9 +8,11 @@ mongoose.connect('mongodb+srv://saacrist:r4KmR892vRyCZ4AS@cursadanodejs.ls9ii.mo
 */
 
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://saacrist:r4KmR892vRyCZ4AS@cluster0.fwn9m.mongodb.net/supersuperHeroes')
+mongoose.connect('mongodb+srv://Grupo-08:grupo08@cursadanodejs.ls9ii.mongodb.net/Node-js')
 .then(() => console.log('Conexión exitosa a MongoDB'))
 .catch(error => console.error('Error al conectar a MongoDB:', error));
+
+
 
 //esquema para los superheroes
 const superheroSchema = new mongoose.Schema({
@@ -27,17 +29,16 @@ const superheroSchema = new mongoose.Schema({
 }, { collection: 'Grupo-08' });
 const SuperHero = mongoose.model('SuperHero', superheroSchema);
 
-
 async function insertSuperHero() {
     const hero = new SuperHero({
-        nombreSuperHeroe: 'Spiderman',
-        nombreReal: 'Peter Parker',
-        edad: 25,
-        planetaOrigen: 'Tierra',
-        debilidad: 'Radioactiva',
-        poderes: ['Trepar paredes', 'Sentido arácnido', 'Super fuerza', 'Agilidad'],
-        aliados: ['Iron Man'],
-        enemigos: ['Duende Verde'],
+        nombreSuperHeroe: 'Thor',
+        nombreReal: 'Thor Odinson',
+        edad: 1000,
+        planetaOrigen: 'Assgardddd',
+        debilidad: 'Destruir su martillo',
+        poderes: ['Controlar el trueno', 'Fuerza sobrehumana', 'Super fuerza', 'Agilidad'],
+        aliados: ['Loki'],
+        enemigos: ['Hela'],
         creador: 'Nata'
     });
 
@@ -45,12 +46,53 @@ async function insertSuperHero() {
     console.log('Superhéroe insertado:', hero);
 }
 // Llama a la función para probarla
-insertSuperHero();
+//insertSuperHero();
+
+async function insertSuperHero3() {
+    const hero = new SuperHero({
+        nombreSuperHeroe: 'Mujer maravilla',
+        nombreReal: 'hmmmmm',
+        edad: 10000,
+        planetaOrigen: 'tierra',
+        debilidad: 'no quiero buscar',
+        poderes: ['hacer que digan la verdad', 'casi vuela', 'Super fuerza', 'Agilidad'],
+        aliados: ['advengers'],
+        enemigos: ['nose'],
+        creador: 'Nata'
+    });
+
+    await hero.save();
+    console.log('Superhéroe insertado:', hero);
+}
+// Llama a la función para probarla
+//insertSuperHero3();
+
+
+async function insertSuperHero2() {
+    const hero = new SuperHero({
+        nombreSuperHeroe: 'Ironmannnnnnn',
+        nombreReal: 'Tony Stark',
+        edad: 15,
+        planetaOrigen: 'Tierra',
+        debilidad: 'Dependiente de la tecnología',
+        poderes: ['Armadura blindada', 'Volar', 'Láseres'],
+        aliados: ['Spiderman'],
+        enemigos: ['Mandarín'],
+        creador: 'Nata'
+    });
+
+    await hero.save();
+    console.log('Superhéroe insertado:', hero);
+}/*
+// Llama a la función para probarla
+insertSuperHero2();
+*/
+
 
 async function updateSuperHero(nombreSuperHeroe) {
     const result = await SuperHero.updateOne(
         { nombreSuperHeroe: nombreSuperHeroe },
-        { $set: { edad: 30 } }
+        { $set: { edad: 26 } }
     );
     console.log('Resultado de la actualización:', result);
 }
@@ -64,7 +106,8 @@ async function deleteSuperHero(nombreSuperHeroe) {
     console.log('Superhéroe eliminado:', result);
 }
 // Llama a la función
-deleteSuperHero('Spiderman');
+/*deleteSuperHero('Thor');
+deleteSuperHero('Thor');*/
 
 
 async function findSuperHeroes() {
